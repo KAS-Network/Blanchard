@@ -174,17 +174,17 @@ h3 {
   margin-right: 100px;
 }
 
-.art-nav__title {
+.art-nav__btn {
   position: relative;
   padding-right: 11px;
   font-size: 18px;
   line-height: 25px;
   font-weight: 400;
   color: var(--text-color-1);
-  transition: color 0.2s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
-.art-nav__title::after {
+.art-nav__btn::after {
   content: "";
   position: absolute;
   right: 0;
@@ -195,14 +195,14 @@ h3 {
   border-bottom: 1px solid #fff;
   transform: rotate(-45deg);
   transform-origin: center;
-  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.art-nav__title_active {
+.art-nav__btn_active {
   color: var(--active);
 }
 
-.art-nav__title_active::after {
+.art-nav__btn_active::after {
   transform: translateY(4px) rotate(135deg);
   border-color: var(--active);
 }
@@ -211,24 +211,34 @@ h3 {
   visibility: hidden;
   position: absolute;
   top: calc(100% + 22px);
-  padding: 40px;
+  left: 0;
+  padding-left: 40px;
+  padding-right: 19px;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
-.is-active {
+.sub-menu_active {
   visibility: visible;
-  opacity: 1;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  max-height: 300px;
 }
 
-.is-inactive {
-  opacity: 0;
+.sub-menu_inactive {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
 }
 
-/*Временное скрытие лишних выпадающих меню*/
-.art-nav__item:not(:nth-child(5)) .sub-menu {
-  /* display: none; */
+.sub-menu__list {
+  width: 241px;
+  max-height: 220px;
+  overflow: auto;
 }
 
 .sub-menu__item {
@@ -328,4 +338,25 @@ h3 {
   font-size: 14px;
   line-height: 19px;
   color: var(--text-color-1);
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 2px;
+  background-color: #000;
+}
+
+.simplebar-scrollbar:before {
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  background-color: #fff;
+  opacity: 1;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  top: 0;
+  bottom: 0;
 }
