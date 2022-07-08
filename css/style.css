@@ -29,3 +29,303 @@
   font-style: italic;
   font-display: swap;
 }
+
+/* general */
+:root {
+  --bg-color-1: #000;
+  --text-color-1: #fff;
+  --active: #7943A4;
+}
+
+html
+{
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+*, *::before, *::after
+{
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+h3 {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1630px;
+}
+
+.list-reset
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* header */
+
+.header__top {
+  background-color: var(--bg-color-1);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__container_top {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.header__link-logo {
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 80px;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 1247px;
+  margin-bottom: 1px;
+}
+
+.header__nav {
+  margin-right: 62px;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 62px;
+}
+
+.nav__link {
+  display: flex;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 600;
+  color: var(--text-color-1);
+}
+
+.header__log-in-link {
+  display: flex;
+  align-items: center;
+}
+
+.header__log-in-icon {
+  margin-right: 7px;
+}
+
+.header__log-in-text {
+  display: flex;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--text-color-1);
+}
+
+.header__bottom {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.header__container_bottom {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.header__art-nav {
+  margin-top: 1px;
+}
+
+.art-nav__list {
+  display: flex;
+}
+
+.art-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.art-nav__item:not(:last-child) {
+  margin-right: 100px;
+}
+
+.art-nav__title {
+  position: relative;
+  padding-right: 11px;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+  color: var(--text-color-1);
+  transition: color 0.2s ease-in-out;
+}
+
+.art-nav__title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 8px;
+  width: 7.5px;
+  height: 7.5px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.art-nav__title_active {
+  color: var(--active);
+}
+
+.art-nav__title_active::after {
+  transform: translateY(4px) rotate(135deg);
+  border-color: var(--active);
+}
+
+.sub-menu {
+  visibility: hidden;
+  position: absolute;
+  top: calc(100% + 22px);
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.is-inactive {
+  opacity: 0;
+}
+
+/*Временное скрытие лишних выпадающих меню*/
+.art-nav__item:not(:nth-child(5)) .sub-menu {
+  /* display: none; */
+}
+
+.sub-menu__item {
+  padding: 9px 14px 12px;
+  width: 220px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.sub-menu__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.sub-menu__item[data-name="tintoretto"] {
+  background-image: url("../img/item-bg-tintoretto.jpg");
+}
+
+.sub-menu__item[data-name="friedrich"] {
+  background-image: url("../img/item-bg-friedrich.jpg");
+}
+
+.sub-menu__item[data-name="leonardo"] {
+  background-image: url("../img/item-bg-leonardo.jpg");
+}
+
+.sub-menu__item[data-name="verrocchio"] {
+  background-image: url("../img/item-bg-verrocchio.jpg");
+}
+
+.sub-menu__item[data-name="monet"] {
+  background-image: url("../img/item-bg-monet.jpg");
+}
+
+.sub-menu__item[data-name="sisley"] {
+  background-image: url("../img/item-bg-sisley.jpg");
+}
+
+.sub-menu__item[data-name="manet"] {
+  background-image: url("../img/item-bg-manet.jpg");
+}
+
+.sub-menu__item[data-name="renoir"] {
+  background-image: url("../img/item-bg-renoir.jpg");
+}
+
+.sub-menu__item[data-name="van-gogh"] {
+  background-image: url("../img/item-bg-van-gogh.jpg");
+}
+
+.sub-menu__item[data-name="cezanne"] {
+  background-image: url("../img/item-bg-cezanne.jpg");
+}
+
+.sub-menu__item[data-name="gauguin"] {
+  background-image: url("../img/item-bg-gauguin.jpg");
+}
+
+.sub-menu__item[data-name="seurat"] {
+  background-image: url("../img/item-bg-seurat.jpg");
+}
+
+.sub-menu__item[data-name="kandinsky"] {
+  background-image: url("../img/item-bg-kandinsky.jpg");
+}
+
+.sub-menu__item[data-name="marinetti"] {
+  background-image: url("../img/item-bg-marinetti.jpg");
+}
+
+.sub-menu__item[data-name="malevich"] {
+  background-image: url("../img/item-bg-malevich.jpg");
+}
+
+.sub-menu__item[data-name="picasso"] {
+  background-image: url("../img/item-bg-picasso.jpg");
+}
+
+.sub-menu__item[data-name="carra"] {
+  background-image: url("../img/item-bg-carra.jpg");
+}
+
+.sub-menu__item[data-name="pratella"] {
+  background-image: url("../img/item-bg-pratella.jpg");
+}
+
+.sub-menu__item[data-name="severini"] {
+  background-image: url("../img/item-bg-severini.jpg");
+}
+
+.sub-menu__item[data-name="balla"] {
+  background-image: url("../img/item-bg-balla.jpg");
+}
+
+.sub-menu__link {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--text-color-1);
+}
