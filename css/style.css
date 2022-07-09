@@ -625,14 +625,45 @@ p {
 }
 
 .hero__btn {
+  position: relative;
   pointer-events: auto;
-  padding: 22.5px 35px;
+  padding: 19.5px 32px;
+  border: 3px solid #9D5CD0;
   border-radius: 100px;
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
   color: var(--text-color-1);
   background-color: #9D5CD0;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.hero__btn:focus {
+  outline: none;
+}
+
+.hero__btn:not(:hover):not(:active):focus::after {
+  opacity: 1;
+}
+
+.hero__btn:hover, .hero__btn:active {
+  border-color: #D1A9F0;
+}
+
+.hero__btn:active {
+  background-color: var(--active);
+}
+
+.hero__btn::after {
+  position: absolute;
+  content: "";
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border: 2px solid #C283F3;
+  border-radius: 100px;
+  opacity: 0;
 }
 
 .hero-swiper {
@@ -654,4 +685,23 @@ p {
 .hero-swiper__img {
   flex-shrink: 0;
   height: 100%;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  top: 0;
+  margin-top: 0;
+  height: 100%;
+  width: 200px;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+  display: none;
 }
