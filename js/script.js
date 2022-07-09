@@ -40,3 +40,11 @@ document.querySelectorAll(".sub-menu__list").forEach(function(subMenuList) {
     autoHide: false
   })
 });
+
+const swiper = new Swiper('.hero-swiper', {
+  loop: true,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});

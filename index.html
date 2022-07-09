@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="libs/simpleBar/css/simplebar.css">
+  <link rel="stylesheet" href="libs/swiper/css/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/style.css">
   <noscript>
     <style>
@@ -473,7 +474,45 @@
       </div>
     </div>
   </header>
+
+  <main class="main">
+    <section class="section hero">
+      <div class="container hero__container">
+        <h1 class="h1">
+          Прикоснитесь к&nbsp;прекрасному
+        </h1>
+        <p class="hero__description">
+          Мы&nbsp;вынуждены отталкиваться от&nbsp;того, что реализация намеченных плановых заданий создаёт предпосылки для новых предложений
+        </p>
+        <button class="hero__btn btn-reset">
+          Подписаться на&nbsp;рассылку
+        </button>
+      </div>
+      <div class="hero__hero-swiper hero-swiper swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <picture class="hero-swiper__picture">
+              <img class="hero-swiper__img" src="img/hero-bg-1-1920.jpg" alt="Фоновая картинка">
+            </picture>
+          </div>
+          <div class="swiper-slide">
+            <picture class="hero-swiper__picture">
+              <img class="hero-swiper__img" src="img/hero-bg-2-1920.jpg" alt="Фоновая картинка">
+            </picture>
+          </div>
+          <div class="swiper-slide">
+            <picture class="hero-swiper__picture">
+              <img class="hero-swiper__img" src="img/hero-bg-3-1920.jpg" alt="Фоновая картинка">
+            </picture>
+          </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+  </main>
   <script src="libs/simpleBar/js/simplebar.min.js"></script>
+  <script src="libs/swiper/js/swiper-bundle.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
