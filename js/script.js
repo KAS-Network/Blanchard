@@ -41,10 +41,16 @@ document.querySelectorAll(".sub-menu__list").forEach(function(subMenuList) {
   })
 });
 
-const swiper = new Swiper('.hero-swiper', {
+const heroSwiper = new Swiper('.hero-swiper', {
   loop: true,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   }
+});
+
+const nativeArtSelect = document.querySelector(".art-select");
+const artSelect = new Choices(nativeArtSelect, {
+  searchEnabled: false,
+  itemSelectText: ""
 });

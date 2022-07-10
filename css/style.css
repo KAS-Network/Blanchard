@@ -733,3 +733,118 @@ p {
   line-height: 32px;
   color: var(--text-color-2);
 }
+
+/* gallery */
+.gallery {
+  margin: 0 auto;
+  max-width: 1920px;
+  background-image: url("../img/gallery-bg.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.gallery__control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gallery__title {
+  margin-bottom: 16px;
+  color: var(--text-color-1);
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-1);
+}
+
+.choices {
+  width: 400px;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 4px;
+}
+
+.choices__inner {
+  padding: 2px 16px 4px 16px;
+  min-height: 40px;
+  border-radius: 6px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-1);
+}
+
+.is-open .choices__inner {
+  border-radius: 6px;
+}
+
+.choices__list--single {
+  padding: 0;
+}
+
+.choices[data-type*=select-one]::after {
+  top: 16px;
+  right: 15px;
+  margin-top: 0;
+  width: 7.5px;
+  height: 7.5px;
+  border: none;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.choices[data-type*=select-one].is-open::after {
+  border-color: #fff;
+  margin-top: 0;
+  transform: translateY(50%) rotate(135deg);
+}
+
+.choices__list--dropdown, .choices__list[aria-expanded] {
+  background-color: #000;
+}
+
+.choices__list--dropdown, .choices__list[aria-expanded] {
+  border: 1px solid #999;
+  border-radius: 6px;
+}
+
+.choices__list--dropdown .choices__item, .choices__list[aria-expanded] .choices__item {
+  padding: 3px 16px 4px;
+  border-bottom: 1px solid #999;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #999;
+}
+
+.choices__list--dropdown .choices__item:last-child,
+.choices__list[aria-expanded] .choices__item:last-child {
+  padding-bottom: 3px;
+  border-bottom: none;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: rgba(255, 255, 255, 0.2);;
+}
+
+.choices.is-focused .choices__inner, .choices:hover .choices__inner {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}

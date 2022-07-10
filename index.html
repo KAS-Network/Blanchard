@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="libs/simpleBar/css/simplebar.css">
   <link rel="stylesheet" href="libs/swiper/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="libs/choices/css/choices.min.css">
   <link rel="stylesheet" href="css/style.css">
   <noscript>
     <style>
@@ -521,9 +522,46 @@
         </p>
       </div>
     </section>
+
+    <section class="section gallery">
+      <div class="container gallery__container">
+        <div class="gallery__control">
+          <h2 class="section__title gallery__title">
+            Галерея
+          </h2>
+          <form class="gallery__filter filter" action="https://jsonplaceholder.typicode.com/posts" method="post">
+            <h3 class="filter__title">
+              Фильтр:
+            </h3>
+            <select class="filter__art-select art-select" name="art direction">
+              <option value="живопись" class="art-select__option">Живопись</option>
+              <option value="рисунок" class="art-select__option">Рисунок</option>
+              <option value="скульптура" class="art-select__option">Скульптура</option>
+            </select>
+            <label class="filter__point">
+              <input class="filter__checkbox" type="checkbox">
+              XIX век
+              <span class="filter__custom-checkbox"></span>
+            </label>
+            <label class="filter__point">
+              <input class="filter__checkbox" type="checkbox">
+              XX век
+              <span class="filter__custom-checkbox"></span>
+            </label>
+            <label class="filter__point">
+              <input class="filter__checkbox" type="checkbox">
+              Современность
+              <span class="filter__custom-checkbox"></span>
+            </label>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
   <script src="libs/simpleBar/js/simplebar.min.js"></script>
   <script src="libs/swiper/js/swiper-bundle.min.js"></script>
+  <script src="libs/choices/js/choices.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
