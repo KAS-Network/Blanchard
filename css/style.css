@@ -744,6 +744,10 @@ p {
   background-repeat: no-repeat;
 }
 
+.gallery__container {
+  display: flex;
+}
+
 .gallery__control {
   display: flex;
   flex-direction: column;
@@ -758,6 +762,7 @@ p {
 .filter {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .filter__title {
@@ -769,6 +774,7 @@ p {
 }
 
 .choices {
+  margin-bottom: 176px;
   width: 400px;
 }
 
@@ -847,4 +853,63 @@ p {
 .choices.is-focused .choices__inner, .choices:hover .choices__inner {
   border-color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter__point {
+  position: relative;
+  padding-left: 24px;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-1);
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.filter__point:hover .filter__custom-checkbox {
+  border-color: var(--hover);
+}
+
+.filter__point:focus .filter__custom-checkbox {
+  border-color: var(--hover);
+}
+
+.filter__point:focus {
+  outline: none;
+  color: var(--hover);
+}
+
+.filter__checkbox {
+  display: none;
+}
+
+.filter__custom-checkbox {
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 0;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.filter__custom-checkbox::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: #C283F3;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.filter__checkbox:checked ~ .filter__custom-checkbox {
+  border-color: #C283F3;
+}
+
+.filter__checkbox:checked ~ .filter__custom-checkbox::after {
+  opacity: 1;
 }

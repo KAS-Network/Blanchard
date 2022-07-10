@@ -54,3 +54,16 @@ const artSelect = new Choices(nativeArtSelect, {
   searchEnabled: false,
   itemSelectText: ""
 });
+
+const filterPoints = document.querySelectorAll(".filter__point");
+filterPoints.forEach(function(filterPoint) {
+  filterPoint.addEventListener("keydown", function(event) {
+    if(event.keyCode === 32) {
+      filterPoints.forEach(function(el) {
+        el.querySelector(".filter__checkbox").removeAttribute("checked");
+      });
+      console.log("Hello!");
+      filterPoint.querySelector(".filter__checkbox").setAttribute("checked", true);
+    }
+  });
+});
