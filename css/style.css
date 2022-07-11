@@ -525,7 +525,7 @@ p {
   right: 0;
   bottom: 0;
   opacity: 0;
-  background-image: linear-gradient(0deg, rgba(194, 131, 243, 0.4), rgba(194, 131, 243, 0.4));
+  background-color: rgba(194, 131, 243, 0.4);
   transition: opacity 0.2s ease-in-out;
 }
 
@@ -1023,4 +1023,47 @@ p {
 .swiper-button-next.swiper-button-disabled::after,
 .swiper-button-prev.swiper-button-disabled::after {
   border-color: #CACACA;
+}
+
+.gallery-swiper__slide:focus {
+  outline: none;
+}
+
+.gallery-swiper__slide:not(:hover):focus::before {
+  border-color: var(--focus);
+}
+
+.gallery-swiper__slide::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  border: 3px solid transparent;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.gallery-swiper__slide:active::before {
+  background-color: rgba(194, 131, 243, 0.4);
+  border-color: rgba(194, 131, 243, 0.4);
+}
+
+.gallery-swiper__slide::after {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  bottom: 25px;
+  left: 25px;
+  content: url("../img/expansion-icon.svg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.gallery-swiper__slide:hover::after {
+  opacity: 1;
 }
