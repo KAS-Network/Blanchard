@@ -1159,6 +1159,26 @@ p {
   display: flex;
 }
 
+.modal-window__close-btn:focus {
+  outline: none;
+}
+
+.modal-window__close-icon path {
+  transition: fill 0.2s ease-in-out;
+}
+
+.modal-window__close-btn:not(:hover):not(:active):focus path {
+  fill: var(--focus);
+}
+
+.modal-window__close-btn:hover path {
+  fill: var(--hover);
+}
+
+.modal-window__close-btn:active path {
+  fill: var(--active);
+}
+
 .modal-window__close-btn::before {
   position: absolute;
   content: "";

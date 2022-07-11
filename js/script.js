@@ -81,12 +81,22 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
   spaceBetween: 50
 });
 
+function ModalWindowExit(event) {
+  if(event.keyCode === 27) {
+    document.querySelector(".modal-window__close-btn").click();
+  }
+}
+
 function closeModalWindow(click) {
   document.body.classList.remove("body_inactive");
+  document.querySelector(".header").removeAttribute("inert");
+  document.querySelector(".main").removeAttribute("inert")
+  document.querySelector(".footer").removeAttribute("inert");
   document.querySelector(".modal-window__picture_selected").classList.remove("modal-window__picture_selected");
   document.querySelector(".modal-window__content_selected").classList.remove("modal-window__content_selected");
   document.querySelector(".modal-window").classList.remove("modal-window_active");
   document.querySelector(".modal-window__close-btn").removeEventListener("click", closeModalWindow);
+  document.removeEventListener("keydown", ModalWindowExit);
 }
 
 const gallerySlides = document.querySelectorAll(".gallery-swiper__slide");
@@ -94,10 +104,16 @@ gallerySlides.forEach(function(slide) {
   slide.addEventListener("click", function(click) {
     click.stopPropagation();
     document.body.classList.add("body_inactive");
+    document.querySelector(".header").setAttribute("inert", true);
+    document.querySelector(".main").setAttribute("inert", true);
+    document.querySelector(".footer").setAttribute("inert", true);
     document.querySelector(".modal-window").classList.add("modal-window_active");
     const path = slide.dataset.path;
     document.querySelector(`.modal-window__picture[data-target="${path}"]`).classList.add("modal-window__picture_selected");
     document.querySelector(`.modal-window__content[data-target="${path}"]`).classList.add("modal-window__content_selected");
-    document.querySelector(".modal-window__close-btn").addEventListener("click", closeModalWindow);
+    const closeBtn = document.querySelector(".modal-window__close-btn");
+    closeBtn.focus();
+    closeBtn.addEventListener("click", closeModalWindow);
+    document.addEventListener("keydown", ModalWindowExit);
   });
 });
