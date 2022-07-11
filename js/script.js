@@ -21,7 +21,6 @@ document.querySelectorAll(".art-nav__btn").forEach(function(btn) {
       const targetSubMenu = document.querySelector(`.sub-menu[data-target="${path}"]`);
       if(targetSubMenu.classList.contains("sub-menu_active")) {
           closeSubMenu(targetSubMenu);
-          btn.classList.remove("art-nav__btn_active");
           document.body.removeEventListener("click", closeAllSubMenus);
       }
       else {
@@ -62,8 +61,22 @@ filterPoints.forEach(function(filterPoint) {
       filterPoints.forEach(function(el) {
         el.querySelector(".filter__checkbox").removeAttribute("checked");
       });
-      console.log("Hello!");
       filterPoint.querySelector(".filter__checkbox").setAttribute("checked", true);
     }
   });
+});
+
+const gallerySwiper = new Swiper('.gallery-swiper', {
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    type: "fraction"
+  },
+  slidesPerView: 3,
+  slidesPerGroup: 3,
+  spaceBetween: 50
 });
