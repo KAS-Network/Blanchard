@@ -1187,3 +1187,120 @@ p {
   bottom: -20px;
   left: -20px;
 }
+
+/* catalog */
+.catalog__header {
+  margin-bottom: 39px;
+}
+
+.catalog__title {
+  margin-bottom: 16px;
+}
+
+.catalog__description {
+  max-width: 1080px;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-2);
+}
+
+.catalog__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-artist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 46.875%;
+}
+
+.about-artist__picture {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.about-artist__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-artist__name {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  color: var(--text-color-2);
+}
+
+.about-artist__life-years {
+  margin-bottom: 15px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #999;
+}
+
+.about-artist__text {
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-2);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.accordion__title {
+  position: relative;
+  display: flex;
+  padding-top: 41px;
+  padding-bottom: 41px;
+  border-top: 1px solid #CACACA;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--text-color-2);
+}
+
+.accordion__expand-icon {
+  position: absolute;
+  top: calc(50% - 25px);
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ECECEC;
+  border-radius: 100%;
+  background-color: #ECECEC;
+}
+
+.accordion__expand-icon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  height: 12.3px;
+  width: 12.3px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.accordion__item:last-child .accordion__title {
+  border-bottom: 1px solid #CACACA;
+}
+
+.artist-list {
+  column-count: 3;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-top: 1px solid #CACACA;
+}
+
+.artist-list__btn {
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-color-2);
+}
