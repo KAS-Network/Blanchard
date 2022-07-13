@@ -57,11 +57,8 @@ const artSelect = new Choices(nativeArtSelect, {
 const filterPoints = document.querySelectorAll(".filter__point");
 filterPoints.forEach(function(filterPoint) {
   filterPoint.addEventListener("keydown", function(event) {
-    if(event.keyCode === 32) {
-      filterPoints.forEach(function(el) {
-        el.querySelector(".filter__checkbox").removeAttribute("checked");
-      });
-      filterPoint.querySelector(".filter__checkbox").setAttribute("checked", true);
+    if(event.keyCode === 13) {
+      filterPoint.click();
     }
   });
 });
@@ -115,5 +112,50 @@ gallerySlides.forEach(function(slide) {
     closeBtn.focus();
     closeBtn.addEventListener("click", closeModalWindow);
     document.addEventListener("keydown", ModalWindowExit);
+  });
+});
+
+function closeAccordionBlock(trigger, block) {
+  trigger.classList.remove("accordion__trigger_active");
+  block.style.maxHeight = "0";
+  setTimeout(function() {
+    block.classList.remove("expansion-block_visible");
+  }, 500);
+}
+
+const triggerList = document.querySelectorAll(".accordion__trigger");
+triggerList.forEach(function(trigger) {
+  trigger.addEventListener("click", function() {
+    const path = trigger.dataset.path;
+    const targetBlock = document.querySelector(`.expansion-block[data-target="${path}"]`);
+    const targetList = targetBlock.querySelector(".expansion-block__list");
+    const targetCork = targetBlock.querySelector(".cork");
+    if(targetBlock.classList.contains("expansion-block_visible")) {
+      closeAccordionBlock(trigger, targetBlock);
+    }
+    else {
+      const activeTrigger = document.querySelector(".accordion__trigger_active");
+      const activeBlock = document.querySelector(".expansion-block_visible");
+      if(activeTrigger) {
+        closeAccordionBlock(activeTrigger, activeBlock);
+      }
+      trigger.classList.add("accordion__trigger_active");
+      targetBlock.classList.add("expansion-block_visible");
+      if(targetList) {
+        targetBlock.style.maxHeight = targetList.offsetHeight + "px";
+        targetCork.classList.add("cork_disabled");
+      }
+      else {
+        targetBlock.style.maxHeight = targetCork.offsetHeight + "px";
+      }
+    }
+  });
+});
+
+triggerList.forEach(function(trigger) {
+  trigger.addEventListener("keydown", function(event) {
+    if(event.keyCode === 13) {
+      trigger.click();
+    }
   });
 });

@@ -1253,16 +1253,30 @@ p {
   width: 50%;
 }
 
-.accordion__title {
+.accordion__trigger {
   position: relative;
   display: flex;
   padding-top: 41px;
   padding-bottom: 41px;
   border-top: 1px solid #CACACA;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.accordion__trigger:focus {
+  outline: none;
+}
+
+.accordion__title {
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   color: var(--text-color-2);
+  transition: color 0.2s ease-in-out;
+}
+
+.accordion__trigger_active .accordion__title {
+  color: var(--active);
 }
 
 .accordion__expand-icon {
@@ -1274,6 +1288,12 @@ p {
   border: 2px solid #ECECEC;
   border-radius: 100%;
   background-color: #ECECEC;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.accordion__trigger_active .accordion__expand-icon {
+  border-color: #9D5CD0;
+  background-color: #D1A9F0;
 }
 
 .accordion__expand-icon::after {
@@ -1286,21 +1306,118 @@ p {
   border-left: 1px solid #000;
   border-bottom: 1px solid #000;
   transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  transition: transform 0.2s ease-in-out;
 }
 
-.accordion__item:last-child .accordion__title {
+.accordion__trigger_active .accordion__expand-icon::after {
+  transform: translateX(-50%) translateY(-50%) rotate(135deg);
+}
+
+.accordion__item:last-child .accordion__trigger {
   border-bottom: 1px solid #CACACA;
 }
 
-.artist-list {
+.accordion__trigger_active,
+.accordion__item:last-child .accordion__trigger_active {
+  border-color: var(--active);
+}
+
+.expansion-block {
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.expansion-block_visible {
+  visibility: visible;
+}
+
+.expansion-block__list {
   column-count: 3;
   padding-top: 25px;
   padding-bottom: 25px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.accordion__item:not(:last-child) .expansion-block__list {
   border-top: 1px solid #CACACA;
 }
 
-.artist-list__btn {
+.accordion__item:last-child .expansion-block__list {
+  border-bottom: 1px solid #CACACA;
+}
+
+.accordion__trigger_active ~ .expansion-block .expansion-block__list {
+  border-top-color: var(--active);
+}
+
+.expansion-block__btn {
   font-size: 16px;
   line-height: 32px;
   color: var(--text-color-2);
+}
+
+.cork {
+  display: flex;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.accordion__item:not(:last-child) .cork {
+  border-top: 1px solid #CACACA;
+}
+
+.accordion__item:last-child .cork {
+  border-bottom: 1px solid #CACACA;
+}
+
+.accordion__trigger_active ~ .expansion-block .cork {
+  border-top-color: var(--active);
+}
+
+.cork_disabled {
+  display: none;
+}
+
+.cork__img {
+  position: relative;
+  margin-right: 24px;
+  width: 275px;
+  min-height: 189px;
+  border: 2px solid #999;
+}
+
+.cork__img::after {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  content: "";
+  background-color: #999;
+}
+
+.cork__title {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--text-color-2);
+}
+
+.cork__description {
+  margin-bottom: 5px;
+  max-width: 275px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-color-2);
+}
+
+.cork__link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #9D5CD0;
 }
