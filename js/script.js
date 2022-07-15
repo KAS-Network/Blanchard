@@ -43,8 +43,8 @@ document.querySelectorAll(".sub-menu__list").forEach(function(subMenuList) {
 const heroSwiper = new Swiper('.hero-swiper', {
   loop: true,
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.hero-swiper__swiper-button-next',
+    prevEl: '.hero-swiper__swiper-button-prev',
   }
 });
 
@@ -65,8 +65,8 @@ filterPoints.forEach(function(filterPoint) {
 
 const gallerySwiper = new Swiper('.gallery-swiper', {
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.gallery-swiper__button-next',
+    prevEl: '.gallery-swiper__button-prev',
   },
   pagination: {
     el: '.swiper-pagination',
@@ -151,7 +151,7 @@ triggerList.forEach(function(trigger) {
       targetBlock.classList.add("expansion-block_visible");
       accordionItem.setAttribute("data-active", true);
       if(targetList) {
-        targetBlock.style.maxHeight = targetList.offsetHeight + "px";
+        targetBlock.style.maxHeight = targetList.offsetHeight + 1 + "px";
         targetCork.classList.add("cork_disabled");
       }
       else {
@@ -188,4 +188,14 @@ artistBtns.forEach(function(btn) {
       document.querySelector(".about-artist__info:not([data-target])").classList.add("about-artist__info_selected");
     }
   });
+});
+
+const eventsSwiper = new Swiper(".events__swiper", {
+  navigation: {
+    nextEl: '.events__swiper-button-next',
+    prevEl: '.events__swiper-button-prev'
+  },
+  slidesPerView: 3,
+  slidesPerGroup: 3,
+  spaceBetween: 50
 });
