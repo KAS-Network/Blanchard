@@ -696,36 +696,36 @@
             <div class="gallery-swiper__button-next swiper-button-next"></div>
           </div>
           <div class="swiper-wrapper">
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="1">
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="1">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-1.jpg" alt="Картина">
               </picture>
-            </div>
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="2">
+            </button>
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="2">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-2.jpg" alt="Картина">
               </picture>
-            </div>
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="3">
+            </button>
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="3">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-3.jpg" alt="Картина">
               </picture>
-            </div>
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="4">
+            </button>
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="4">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-4.jpg" alt="Картина">
               </picture>
-            </div>
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="5">
+            </button>
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="5">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-5.jpg" alt="Картина">
               </picture>
-            </div>
-            <div class="gallery-swiper__slide swiper-slide" tabindex="0" data-path="6">
+            </button>
+            <button class="gallery-swiper__slide swiper-slide btn-reset" tabindex="0" data-path="6">
               <picture class="gallery-swiper__picture">
                 <img class="gallery-swiper__img" src="img/gallery-6.jpg" alt="Картина">
               </picture>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -743,10 +743,25 @@
         </div>
         <div class="catalog__content">
           <div class="catalog__about-artist about-artist">
-            <picture class="about-artist__picture">
+            <picture class="about-artist__picture about-artist__picture_selected" data-target="Domenico Ghirlandaio">
               <img class="about-artist__img" src="img/about-artist-ghirlandaio.jpg" alt="Портрет">
             </picture>
-            <div class="about-artist__info">
+            <picture class="about-artist__picture" data-target="Bissolo, Francesco">
+              <img class="about-artist__img" src="img/about-artist-ghirlandaio.jpg" alt="Портрет">
+            </picture>
+            <picture class="about-artist__picture" data-target="Botticini, Raffaello">
+              <img class="about-artist__img" src="img/about-artist-ghirlandaio.jpg" alt="Портрет">
+            </picture>
+            <picture class="about-artist__picture" data-target="Bramantino">
+              <img class="about-artist__img" src="img/about-artist-ghirlandaio.jpg" alt="Портрет">
+            </picture>
+            <picture class="about-artist__picture" data-target="Granacci, Francesco">
+              <img class="about-artist__img" src="img/about-artist-ghirlandaio.jpg" alt="Портрет">
+            </picture>
+            <picture class="about-artist__picture">
+              <img class="about-artist__img" src="img/about-artist-unknown.jpg" alt="Портрет неизвестного художника">
+            </picture>
+            <div class="about-artist__info about-artist__info_selected" data-target="Domenico Ghirlandaio">
               <h3 class="about-artist__name">
                 Доменико Гирландайо
               </h3>
@@ -756,6 +771,61 @@
               <p class="about-artist__text">
                 Один из&nbsp;ведущих флорентийских художников Кватроченто, основатель художественной династии, которую продолжили его брат Давид и&nbsp;сын Ридольфо. Глава художественной мастерской, где юный Микеланджело в&nbsp;течение года овладевал профессиональными навыками. Автор фресковых циклов, в&nbsp;которых выпукло, со&nbsp;всевозможными подробностями показана домашняя жизнь библейских персонажей (в&nbsp;их&nbsp;роли выступают знатные граждане Флоренции в&nbsp;костюмах того времени).
               </p>
+            </div>
+            <div class="about-artist__info" data-target="Bissolo, Francesco">
+              <h3 class="about-artist__name">
+                Доменико Гирландайо
+              </h3>
+              <span class="about-artist__life-years">
+                2&nbsp;июня 1448&ndash;11 января 1494
+              </span>
+              <p class="about-artist__text">
+                Один из&nbsp;ведущих флорентийских художников Кватроченто, основатель художественной династии, которую продолжили его брат Давид и&nbsp;сын Ридольфо. Глава художественной мастерской, где юный Микеланджело в&nbsp;течение года овладевал профессиональными навыками. Автор фресковых циклов, в&nbsp;которых выпукло, со&nbsp;всевозможными подробностями показана домашняя жизнь библейских персонажей (в&nbsp;их&nbsp;роли выступают знатные граждане Флоренции в&nbsp;костюмах того времени).
+              </p>
+            </div>
+            <div class="about-artist__info" data-target="Botticini, Raffaello">
+              <h3 class="about-artist__name">
+                Доменико Гирландайо
+              </h3>
+              <span class="about-artist__life-years">
+                2&nbsp;июня 1448&ndash;11 января 1494
+              </span>
+              <p class="about-artist__text">
+                Один из&nbsp;ведущих флорентийских художников Кватроченто, основатель художественной династии, которую продолжили его брат Давид и&nbsp;сын Ридольфо. Глава художественной мастерской, где юный Микеланджело в&nbsp;течение года овладевал профессиональными навыками. Автор фресковых циклов, в&nbsp;которых выпукло, со&nbsp;всевозможными подробностями показана домашняя жизнь библейских персонажей (в&nbsp;их&nbsp;роли выступают знатные граждане Флоренции в&nbsp;костюмах того времени).
+              </p>
+            </div>
+            <div class="about-artist__info" data-target="Bramantino">
+              <h3 class="about-artist__name">
+                Доменико Гирландайо
+              </h3>
+              <span class="about-artist__life-years">
+                2&nbsp;июня 1448&ndash;11 января 1494
+              </span>
+              <p class="about-artist__text">
+                Один из&nbsp;ведущих флорентийских художников Кватроченто, основатель художественной династии, которую продолжили его брат Давид и&nbsp;сын Ридольфо. Глава художественной мастерской, где юный Микеланджело в&nbsp;течение года овладевал профессиональными навыками. Автор фресковых циклов, в&nbsp;которых выпукло, со&nbsp;всевозможными подробностями показана домашняя жизнь библейских персонажей (в&nbsp;их&nbsp;роли выступают знатные граждане Флоренции в&nbsp;костюмах того времени).
+              </p>
+            </div>
+            <div class="about-artist__info" data-target="Granacci, Francesco">
+              <h3 class="about-artist__name">
+                Доменико Гирландайо
+              </h3>
+              <span class="about-artist__life-years">
+                2&nbsp;июня 1448&ndash;11 января 1494
+              </span>
+              <p class="about-artist__text">
+                Один из&nbsp;ведущих флорентийских художников Кватроченто, основатель художественной династии, которую продолжили его брат Давид и&nbsp;сын Ридольфо. Глава художественной мастерской, где юный Микеланджело в&nbsp;течение года овладевал профессиональными навыками. Автор фресковых циклов, в&nbsp;которых выпукло, со&nbsp;всевозможными подробностями показана домашняя жизнь библейских персонажей (в&nbsp;их&nbsp;роли выступают знатные граждане Флоренции в&nbsp;костюмах того времени).
+              </p>
+            </div>
+            <div class="about-artist__info">
+              <h3 class="about-artist__name">
+                Что мы&nbsp;о&nbsp;нём знаем?
+              </h3>
+              <p class="about-artist__text">
+                Пока ничего... Зато мы&nbsp;точно знаем, что в&nbsp;галерее есть на&nbsp;что посмотреть!
+              </p>
+              <a class="about-artist__link" href="#">
+                В галерею
+              </a>
             </div>
           </div>
           <ul class="catalog__accordion accordion list-reset">
@@ -769,127 +839,127 @@
               <div class="accordion__expansion-block expansion-block" data-target="1">
                 <ul class="expansion-block__list list-reset">
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Benedetto di Bindo">
                       Бенедетто ди Биндо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Bergognone, Ambrogio">
                       Бергоньоне, Амброджо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Bissolo, Francesco">
                       Биссоло, Франческо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Boltraffio, Giovanni">
                       Больтраффио, Джованни
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Bonsignori, Francesco">
                       Бонсиньори, Франческо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Botticini, Raffaello">
                       Боттичини, Рафаэлло
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Bramantino">
                       Брамантино
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Brea, Ludovico">
                       Бреа, Людовико
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Biagio d'Antonio Tucci">
                       Бьяджо д’Антонио Туччи
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Vecchietta">
                       Веккьетта
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Andrea Verrocchio">
                       Андреа Верроккьо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Domenico Ghirlandaio">
                       Доменико Гирландайо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Benozzo Gozzoli">
                       Беноццо Гоццоли
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Granacci, Francesco">
                       Граначчи, Франческо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Gregorio di Cecco">
                       Грегорио ди Чекко
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Giovanni da Udine">
                       Джованни да Удине
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Giovanni di Paolo">
                       Джованни ди Паоло
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Giorgione">
                       Джорджоне
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Parentino, Bernardo">
                       Парентино, Бернардо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Pesellino">
                       Пезеллино
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Pietro Perugino">
                       Пьетро Перуджино
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Peruzzi, Baldassare">
                       Перуцци, Бальдассаре
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Pisanello">
                       Пизанелло
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Pinturicchio">
                       Пинтуриккьо
                     </button>
                   </li>
                   <li class="expansion-block__item">
-                    <button class="expansion-block__btn btn-reset">
+                    <button class="expansion-block__btn btn-reset" data-name="Pinturicchio">
                       Пинтуриккьо
                     </button>
                   </li>

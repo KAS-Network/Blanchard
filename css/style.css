@@ -1217,13 +1217,21 @@ p {
 }
 
 .about-artist__picture {
-  display: flex;
+  display: none;
   margin-bottom: 30px;
 }
 
-.about-artist__info {
+.about-artist__picture_selected {
   display: flex;
+}
+
+.about-artist__info {
+  display: none;
   flex-direction: column;
+}
+
+.about-artist__info_selected {
+  display: flex;
 }
 
 .about-artist__name {
@@ -1242,15 +1250,27 @@ p {
 }
 
 .about-artist__text {
+  margin-bottom: 15px;
   font-size: 16px;
   line-height: 32px;
   color: var(--text-color-2);
+}
+
+.about-artist__link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #9D5CD0;
 }
 
 .accordion {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+.accordion__item {
+  transition: border-color 0.2s ease-in-out;
 }
 
 .accordion__trigger {
@@ -1267,12 +1287,29 @@ p {
   outline: none;
 }
 
+.accordion__trigger_active {
+  border-color: var(--active);
+}
+
 .accordion__title {
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   color: var(--text-color-2);
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+.accordion__trigger:not(:hover):not(:active):not(.accordion__trigger_active):focus .accordion__title {
+  background-color: #9D5CD0;
+  color: var(--text-color-1);
+}
+
+.accordion__trigger:hover .accordion__title {
+  color: #9D5CD0;
+}
+
+.accordion__trigger:active .accordion__title {
+  color: var(--active);
 }
 
 .accordion__trigger_active .accordion__title {
@@ -1289,6 +1326,20 @@ p {
   border-radius: 100%;
   background-color: #ECECEC;
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.accordion__trigger:focus .accordion__expand-icon {
+  background-color: #D1A9F0;
+  border-color: #D1A9F0;
+}
+
+.accordion__trigger:hover .accordion__expand-icon {
+  background-color: #D1A9F0;
+  border-color: #D1A9F0;
+}
+
+.accordion__trigger:active .accordion__expand-icon {
+  border-color: #9D5CD0;
 }
 
 .accordion__trigger_active .accordion__expand-icon {
@@ -1313,20 +1364,30 @@ p {
   transform: translateX(-50%) translateY(-50%) rotate(135deg);
 }
 
-.accordion__item:last-child .accordion__trigger {
-  border-bottom: 1px solid #CACACA;
-}
-
-.accordion__trigger_active,
-.accordion__item:last-child .accordion__trigger_active {
-  border-color: var(--active);
-}
-
 .expansion-block {
   visibility: hidden;
   max-height: 0;
+  border-top: 1px solid #CACACA;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+}
+
+.accordion__trigger_active + .expansion-block {
+  border-color: var(--active);
+}
+
+.accordion__trigger:hover,
+.accordion__item:not(:last-child):not([data-active]):hover + .accordion__item .accordion__trigger,
+.accordion__item:last-child:not([data-active]):hover,
+.accordion__item[data-active] .accordion__trigger:hover + .expansion-block {
+  border-color: #9D5CD0;
+}
+
+.accordion__trigger:active,
+.accordion__item:not(:last-child):not([data-active]):active + .accordion__item .accordion__trigger,
+.accordion__item:last-child:not([data-active]):active,
+.accordion__item[data-active] .accordion__trigger:active + .expansion-block {
+  border-color: var(--active);
 }
 
 .expansion-block_visible {
@@ -1340,22 +1401,38 @@ p {
   transition: border-color 0.2s ease-in-out;
 }
 
-.accordion__item:not(:last-child) .expansion-block__list {
-  border-top: 1px solid #CACACA;
-}
-
-.accordion__item:last-child .expansion-block__list {
+.accordion__item:last-child {
   border-bottom: 1px solid #CACACA;
 }
 
-.accordion__trigger_active ~ .expansion-block .expansion-block__list {
-  border-top-color: var(--active);
-}
-
 .expansion-block__btn {
+  position: relative;
   font-size: 16px;
   line-height: 32px;
   color: var(--text-color-2);
+}
+
+.expansion-block__btn:focus {
+  outline: none;
+}
+
+.expansion-block__btn:not(:hover):not(:active):focus {
+  background-color: #9D5CD0;
+}
+
+.expansion-block__btn::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.expansion-block__btn:hover::after {
+  background-color: #9D5CD0;
 }
 
 .cork {
@@ -1363,18 +1440,6 @@ p {
   padding-top: 25px;
   padding-bottom: 25px;
   transition: border-color 0.2s ease-in-out;
-}
-
-.accordion__item:not(:last-child) .cork {
-  border-top: 1px solid #CACACA;
-}
-
-.accordion__item:last-child .cork {
-  border-bottom: 1px solid #CACACA;
-}
-
-.accordion__trigger_active ~ .expansion-block .cork {
-  border-top-color: var(--active);
 }
 
 .cork_disabled {
