@@ -199,3 +199,16 @@ const eventsSwiper = new Swiper(".events__swiper", {
   slidesPerGroup: 3,
   spaceBetween: 50
 });
+
+const projectsSwiper = new Swiper(".partners", {
+  navigation: {
+    nextEl: '.partners__swiper-button-next',
+    prevEl: '.partners__swiper-button-prev'
+  },
+  slidesPerView: 3,
+  slidesPerGroup: 3,
+  spaceBetween: 50,
+  keyboard: {
+    enabled: true
+  }
+});
