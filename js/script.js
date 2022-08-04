@@ -249,3 +249,34 @@ formValidation.addField("#tel-input", [
     errorMessage: "Недопустимый формат"
   }
 ]);
+
+function init(){
+  var contactsMap = new ymaps.Map("contacts-map", {
+    center: [55.75846806898367, 37.60108849999989],
+    zoom: 7,
+    controls: ['geolocationControl', 'zoomControl']
+    },
+    {
+      suppressMapOpenBlock: true,
+      geolocationControlSize: "large",
+      geolocationControlPosition:  { top: "350px", right: "20px" },
+      geolocationControlFloat: 'none',
+      zoomControlSize: "small",
+      zoomControlFloat: "none",
+      zoomControlPosition: { top: "270px", right: "20px" }
+    }
+  );
+  contactsMap.behaviors.disable('scrollZoom');
+  const myPlacemark = new ymaps.Placemark(
+    [55.75846806898367, 37.60108849999989],
+    {},
+    {
+      iconLayout: "default#image",
+      iconImageHref: "img/map-marker.svg",
+      iconImageSize: [40, 40],
+      iconImageOffset: [-20, -40],
+    }
+  );
+  contactsMap.geoObjects.add(myPlacemark);
+}
+ymaps.ready(init);

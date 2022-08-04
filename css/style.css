@@ -1815,7 +1815,7 @@ p {
 
 /* contacts */
 .contacts {
-  padding-top: 0;
+  padding: 0;
 }
 
 .contacts__top {
@@ -1987,4 +1987,10 @@ p {
   font-size: 12px;
   line-height: 16px;
   color: #D11616 !important;
+}
+
+.contacts__map {
+  height: 700px;
+  max-width: 1920px;
+  filter: grayscale();
 }
