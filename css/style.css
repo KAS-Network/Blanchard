@@ -1994,3 +1994,45 @@ p {
   max-width: 1920px;
   filter: grayscale();
 }
+
+/* footer */
+.footer {
+  background-color: #000;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 47px;
+  padding-bottom: 48px;
+}
+
+.footer__link-logo {
+  display: flex;
+}
+
+.social-list {
+  display: flex;
+}
+
+.social-list__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.social-list__link {
+  display: flex;
+}
+
+.social-list__link path {
+  transition: fill 0.2s ease-in-out;
+}
+
+.social-list__link:hover path,
+.social-list__link:focus path {
+  fill: #fff;
+}
+
+.social-list__link:active path {
+  fill: #9D5CD0;
+}
