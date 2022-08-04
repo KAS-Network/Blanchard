@@ -1853,8 +1853,12 @@ p {
   display: flex;
 }
 
-.callback-form__input {
+.callback-form__label {
+  position: relative;
   margin-right: 20px;
+}
+
+.callback-form__input {
   padding: 8px 23px;
   width: 270px;
   border: 1px solid #333;
@@ -1969,4 +1973,18 @@ p {
 .social-block__link:active,
 .social-block__link:active::after {
   opacity: 1;
+}
+
+.just-validate-error-field {
+  border-color: #D11616;
+}
+
+.just-validate-error-label {
+  position: absolute;
+  left: 24px;
+  bottom: calc(100% + 2px);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #D11616 !important;
 }

@@ -1324,8 +1324,12 @@
             <span class="address__point">Леонтьевский переулок, дом 5/1</span>
           </address>
           <form class="contacts__callback-form callback-form" action="https://jsonplaceholder.typicode.com/posts" method="post">
-            <input class="callback-form__input" type="text" placeholder="Имя*" required>
-            <input class="callback-form__input" type="tel" placeholder="Телефон*" required>
+            <label class="callback-form__label" for="name-input">
+              <input id="name-input" class="callback-form__input" name="Name" type="text" placeholder="Имя*" required>
+            </label>
+            <label class="callback-form__label" for="tel-input">
+              <input id="tel-input" class="callback-form__input" name="Phone" type="tel" placeholder="Телефон*" required>
+            </label>
             <button class="callback-form__btn btn-reset" type="submit">
               Заказать обратный звонок
             </button>
@@ -1363,6 +1367,8 @@
   <script src="libs/simpleBar/js/simplebar.min.js"></script>
   <script src="libs/swiper/js/swiper-bundle.min.js"></script>
   <script src="libs/choices/js/choices.min.js"></script>
+  <script src="libs/inputMask/js/inputmask.js"></script>
+  <script src="libs/justValidate/js/just-validate.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

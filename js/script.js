@@ -212,3 +212,40 @@ const projectsSwiper = new Swiper(".partners", {
     enabled: true
   }
 });
+
+const telInput = document.querySelector('.callback-form__input[type="tel"]');
+const telMaskInput = new Inputmask("+7-(999)-999-99-99");
+telMaskInput.mask(telInput);
+
+function telValidate() {
+  const unmaskedTel = telInput.inputmask.unmaskedvalue();
+  return Number(unmaskedTel) && unmaskedTel.length === 10;
+}
+
+const formValidation = new JustValidate(document.querySelector(".callback-form"));
+formValidation.addField("#name-input", [
+  {
+    rule: "minLength",
+    value: 3,
+    errorMessage: "Слишком короткое имя"
+  },
+  {
+    rule: "maxLength",
+    value: 30,
+    errorMessage: "Слишком длинное имя"
+  },
+  {
+    rule: "required",
+    errorMessage: "Введите имя"
+  }
+]);
+formValidation.addField("#tel-input", [
+  {
+    rule: "required",
+    errorMessage: "Введите телефон"
+  },
+  {
+    validator: telValidate,
+    errorMessage: "Недопустимый формат"
+  }
+]);
