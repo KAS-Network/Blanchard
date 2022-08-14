@@ -34,7 +34,7 @@ document.querySelectorAll(".art-nav__btn").forEach(function(btn) {
   });
 });
 
-document.querySelectorAll(".sub-menu__list").forEach(function(subMenuList) {
+document.querySelectorAll(".sub-menu__wrapper").forEach(function(subMenuList) {
   new SimpleBar(subMenuList, {
     autoHide: false
   })
@@ -78,46 +78,66 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
   spaceBetween: 50
 });
 
-function ModalWindowExit(event) {
-  if(event.keyCode === 27) {
-    document.querySelector(".modal-window__close-btn").click();
-  }
-}
-
-function closeModalWindow(click) {
-  const picture = document.querySelector(".modal-window__picture_selected")
-  const target = picture.dataset.target;
-  const slide = document.querySelector(`.gallery-swiper__slide[data-path="${target}"]`);
-  document.body.classList.remove("body_inactive");
-  document.querySelector(".header").removeAttribute("inert");
-  document.querySelector(".main").removeAttribute("inert")
-  document.querySelector(".footer").removeAttribute("inert");
-  picture.classList.remove("modal-window__picture_selected");
-  document.querySelector(".modal-window__content_selected").classList.remove("modal-window__content_selected");
-  document.querySelector(".modal-window").classList.remove("modal-window_active");
-  document.querySelector(".modal-window__close-btn").removeEventListener("click", closeModalWindow);
-  click.target.removeEventListener("click", closeModalWindow);
-  document.removeEventListener("keydown", ModalWindowExit);
-  slide.focus();
-}
-
+const lockPadding = window.innerWidth - document.body.offsetWidth + "px";
 const gallerySlides = document.querySelectorAll(".gallery-swiper__slide");
-gallerySlides.forEach(function(slide) {
-  slide.addEventListener("click", function(click) {
-    click.stopPropagation();
-    document.body.classList.add("body_inactive");
+const popup = document.querySelector(".popup");
+const popupCloseBtn = document.querySelector(".popup__close-btn");
+var unlock = true
+
+function openPopup(event) {
+  if(unlock) {
+    const targetSlide = event.target.closest(".gallery-swiper__slide");
+    const path = targetSlide.dataset.path;
+    const targetPicture = document.querySelector(`.popup__picture[data-target="${path}"]`);
+    const targetInfo = document.querySelector(`.popup__info[data-target="${path}"]`);
+    document.body.classList.add("body_lock");
+    document.body.style.paddingRight = lockPadding;
+    popup.classList.add("popup_active");
+    targetPicture.classList.add("popup__picture_selected");
+    targetInfo.classList.add("popup__info_selected");
     document.querySelector(".header").setAttribute("inert", true);
     document.querySelector(".main").setAttribute("inert", true);
     document.querySelector(".footer").setAttribute("inert", true);
-    document.querySelector(".modal-window").classList.add("modal-window_active");
-    const path = slide.dataset.path;
-    document.querySelector(`.modal-window__picture[data-target="${path}"]`).classList.add("modal-window__picture_selected");
-    document.querySelector(`.modal-window__content[data-target="${path}"]`).classList.add("modal-window__content_selected");
-    const closeBtn = document.querySelector(".modal-window__close-btn");
-    closeBtn.focus();
-    closeBtn.addEventListener("click", closeModalWindow);
-    document.addEventListener("keydown", ModalWindowExit);
-  });
+    popupCloseBtn.focus();
+    popupCloseBtn.addEventListener("click", closePopup);
+    document.addEventListener("keydown", popupExit);
+  }
+}
+
+function closePopup(event) {
+  unlock = false;
+  const targetPicture = document.querySelector(".popup__picture_selected");
+  const targetInfo = document.querySelector(".popup__info_selected");
+  const target = targetPicture.dataset.target;
+  const targetSlide = document.querySelector(`.gallery-swiper__slide[data-path="${target}"]`);
+  popup.classList.add("popup_inactive");
+  popup.style.marginRight = "-" + lockPadding;
+  setTimeout(function() {
+    popup.classList.remove("popup_active");
+    popup.classList.remove("popup_inactive");
+    targetPicture.classList.remove("popup__picture_selected");
+    targetInfo.classList.remove("popup__info_selected");
+    popup.style.marginRight = "0";
+    unlock = true;
+  }, 500);
+  document.querySelector(".header").removeAttribute("inert");
+  document.querySelector(".main").removeAttribute("inert");
+  document.querySelector(".footer").removeAttribute("inert");
+  document.body.classList.remove("body_lock");
+  document.body.style.paddingRight = "0";
+  targetSlide.focus();
+  popupCloseBtn.removeEventListener("click", closePopup);
+  document.removeEventListener("keydown", popupExit);
+}
+
+function popupExit(event) {
+  if(event.keyCode === 27) {
+    popupCloseBtn.click();
+  }
+}
+
+gallerySlides.forEach(function(slide) {
+  slide.addEventListener("click", openPopup);
 });
 
 function closeAccordionBlock(trigger, block) {
@@ -202,8 +222,8 @@ const eventsSwiper = new Swiper(".events__swiper", {
 
 const projectsSwiper = new Swiper(".partners", {
   navigation: {
-    nextEl: '.partners__swiper-button-next',
-    prevEl: '.partners__swiper-button-prev'
+    nextEl: '.projects__swiper-button-next',
+    prevEl: '.projects__swiper-button-prev'
   },
   slidesPerView: 3,
   slidesPerGroup: 3,
