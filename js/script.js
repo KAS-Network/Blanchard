@@ -42,9 +42,10 @@ document.querySelectorAll(".sub-menu__wrapper").forEach(function(subMenuList) {
 
 const heroSwiper = new Swiper('.hero-swiper', {
   loop: true,
-  navigation: {
-    nextEl: '.hero-swiper__swiper-button-next',
-    prevEl: '.hero-swiper__swiper-button-prev',
+  effect: "fade",
+  speed: 2000,
+  autoplay: {
+    delay: 6000
   }
 });
 
@@ -52,15 +53,6 @@ const nativeArtSelect = document.querySelector(".art-select");
 const artSelect = new Choices(nativeArtSelect, {
   searchEnabled: false,
   itemSelectText: ""
-});
-
-const filterPoints = document.querySelectorAll(".filter__point");
-filterPoints.forEach(function(filterPoint) {
-  filterPoint.addEventListener("keydown", function(event) {
-    if(event.keyCode === 13) {
-      filterPoint.click();
-    }
-  });
 });
 
 const gallerySwiper = new Swiper('.gallery-swiper', {
@@ -140,56 +132,68 @@ gallerySlides.forEach(function(slide) {
   slide.addEventListener("click", openPopup);
 });
 
-function closeAccordionBlock(trigger, block) {
-  trigger.classList.remove("accordion__trigger_active");
-  block.style.maxHeight = "0";
-  const accordionItem = trigger.parentElement;
+//  =====Ремонтные работы=====
+
+function openDropDownBlock(block) {
+  triggerUnlockedForOpening = false;
+  const dropDownBlockList = block.querySelector(".drop-down-block__list");
+  const dropDownBlockCork = block.querySelector(".cork");
+  var height;
+  if(dropDownBlockList) {
+    height = dropDownBlockList.offsetHeight;
+  }
+  else {
+    height = dropDownBlockCork.offsetHeight;
+  }
+  const accordionItem = block.parentElement;
+  const expandIcon = accordionItem.querySelector(".accordion__expand-icon");
+  const activeBlockList = document.querySelectorAll(".drop-down-block_active");
+  activeBlockList.forEach(function(activeBlock) {
+      closeDropDownBlock(activeBlock);
+  });
+  block.classList.add("drop-down-block_active");
+  block.style.height = height + "px";
+  accordionItem.setAttribute("data-active", true);
+  expandIcon.classList.add("accordion__expand-icon_rotated");
   setTimeout(function() {
-    block.classList.remove("expansion-block_visible");
-    accordionItem.removeAttribute("data-active");
+      triggerUnlockedForOpening = true;
   }, 500);
 }
 
+function closeDropDownBlock(block) {
+  triggerUnlockedForClosing = false;
+  const accordionItem = block.parentElement;
+  const expandIcon = accordionItem.querySelector(".accordion__expand-icon");
+  block.style.height = "0";
+  expandIcon.classList.remove("accordion__expand-icon_rotated");
+  setTimeout(function() {
+      block.classList.remove("drop-down-block_active");
+      accordionItem.removeAttribute("data-active");
+      triggerUnlockedForClosing = true;
+  }, 500);
+}
+
+var triggerUnlockedForOpening = true;
+var triggerUnlockedForClosing = true;
 const triggerList = document.querySelectorAll(".accordion__trigger");
+const dropDownBlockList = document.querySelectorAll(".drop-down-block");
 triggerList.forEach(function(trigger) {
-  trigger.addEventListener("click", function() {
-    const path = trigger.dataset.path;
-    const targetBlock = document.querySelector(`.expansion-block[data-target="${path}"]`);
-    const targetList = targetBlock.querySelector(".expansion-block__list");
-    const targetCork = targetBlock.querySelector(".cork");
-    if(targetBlock.classList.contains("expansion-block_visible")) {
-      closeAccordionBlock(trigger, targetBlock);
-    }
-    else {
-      const activeTrigger = document.querySelector(".accordion__trigger_active");
-      const activeBlock = document.querySelector(".expansion-block_visible");
-      if(activeTrigger) {
-        closeAccordionBlock(activeTrigger, activeBlock);
+  trigger.addEventListener("click", function(click) {
+      if(triggerUnlockedForOpening && triggerUnlockedForClosing) {
+          const path = trigger.dataset.path;
+          const block = document.querySelector(`.drop-down-block[data-target="${path}"]`);
+          if(block.classList.contains("drop-down-block_active")) {
+              closeDropDownBlock(block);
+          }
+          else {
+              openDropDownBlock(block);
+          }
       }
-      const accordionItem = trigger.parentElement;
-      trigger.classList.add("accordion__trigger_active");
-      targetBlock.classList.add("expansion-block_visible");
-      accordionItem.setAttribute("data-active", true);
-      if(targetList) {
-        targetBlock.style.maxHeight = targetList.offsetHeight + 1 + "px";
-        targetCork.classList.add("cork_disabled");
-      }
-      else {
-        targetBlock.style.maxHeight = targetCork.offsetHeight + "px";
-      }
-    }
   });
 });
+triggerList[0].click();
 
-triggerList.forEach(function(trigger) {
-  trigger.addEventListener("keydown", function(event) {
-    if(event.keyCode === 13) {
-      trigger.click();
-    }
-  });
-});
-
-const artistBtns = document.querySelectorAll(".expansion-block__btn");
+const artistBtns = document.querySelectorAll(".drop-down-block__btn");
 artistBtns.forEach(function(btn) {
   btn.addEventListener("click", function() {
     const selectedPicture = document.querySelector(".about-artist__picture_selected");
@@ -209,6 +213,7 @@ artistBtns.forEach(function(btn) {
     }
   });
 });
+
 
 const eventsSwiper = new Swiper(".events__swiper", {
   navigation: {
