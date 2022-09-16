@@ -320,9 +320,7 @@ function init(){
 }
 ymaps.ready(init);
 
-// Плавный скролл
-
-const linkList = document.querySelectorAll(".nav__link[data-goto]");
+const linkList = document.querySelectorAll("*[data-goto]");
 linkList.forEach(function(link) {
   link.addEventListener("click", function(click) {
     const targetSection = document.querySelector(link.dataset.goto);

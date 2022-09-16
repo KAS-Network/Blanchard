@@ -763,7 +763,7 @@ p {
 
 .gallery__container {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .gallery__control {
@@ -950,8 +950,13 @@ p {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 410px;
+  /* height: 410px; */
+  margin-top: 25px;
   padding-top: 60px;
+}
+
+.gallery-swiper__slide {
+  display: flex;
 }
 
 .gallery-swiper__picture {
@@ -1291,6 +1296,10 @@ p {
 .about-artist__picture {
   display: flex;
   margin-bottom: 30px;
+}
+
+.about-artist__img {
+  width: 100%;
 }
 
 .about-artist__name {
@@ -1686,289 +1695,6 @@ p {
   z-index: 10;
 }
 
-/* .accordion {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.accordion__item {
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.accordion__trigger {
-  position: relative;
-  display: flex;
-  padding-top: 41px;
-  padding-bottom: 41px;
-  border-top: 1px solid #CACACA;
-  cursor: pointer;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.accordion__trigger:focus {
-  outline: none;
-}
-
-.accordion__trigger_active {
-  border-color: var(--active);
-}
-
-.accordion__title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  color: var(--text-color-2);
-  transition: color 0.2s ease-in-out, background-color 0.2s ease;
-}
-
-.accordion__trigger:not(:hover):not(:active):not(.accordion__trigger_active):focus .accordion__title {
-  background-color: #9D5CD0;
-  color: var(--text-color-1);
-}
-
-.accordion__trigger:hover .accordion__title {
-  color: #9D5CD0;
-}
-
-.accordion__trigger:active .accordion__title {
-  color: var(--active);
-}
-
-.accordion__trigger_active .accordion__title {
-  color: var(--active);
-}
-
-.accordion__expand-icon {
-  position: absolute;
-  top: calc(50% - 25px);
-  right: 0;
-  width: 50px;
-  height: 50px;
-  border: 2px solid #ECECEC;
-  border-radius: 100%;
-  background-color: #ECECEC;
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-.accordion__trigger:focus .accordion__expand-icon {
-  background-color: #D1A9F0;
-  border-color: #D1A9F0;
-}
-
-.accordion__trigger:hover .accordion__expand-icon {
-  background-color: #D1A9F0;
-  border-color: #D1A9F0;
-}
-
-.accordion__trigger:active .accordion__expand-icon {
-  border-color: #9D5CD0;
-}
-
-.accordion__trigger_active .accordion__expand-icon {
-  border-color: #9D5CD0;
-  background-color: #D1A9F0;
-}
-
-.accordion__expand-icon::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  content: "";
-  height: 12.3px;
-  width: 12.3px;
-  border-left: 1px solid #000;
-  border-bottom: 1px solid #000;
-  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-  transition: transform 0.2s ease-in-out;
-}
-
-.accordion__trigger_active .accordion__expand-icon::after {
-  transform: translateX(-50%) translateY(-50%) rotate(135deg);
-}
-
-.expansion-block {
-  display: none;
-  max-height: 0;
-  border-top: 1px solid #CACACA;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-}
-
-.accordion__trigger_active + .expansion-block {
-  border-color: var(--active);
-}
-
-.accordion__trigger:hover,
-.accordion__item:not(:last-child):not([data-active]):hover + .accordion__item .accordion__trigger,
-.accordion__item:last-child:not([data-active]):hover,
-.accordion__item[data-active] .accordion__trigger:hover + .expansion-block {
-  border-color: #9D5CD0;
-}
-
-.accordion__trigger:active,
-.accordion__item:not(:last-child):not([data-active]):active + .accordion__item .accordion__trigger,
-.accordion__item:last-child:not([data-active]):active,
-.accordion__item[data-active] .accordion__trigger:active + .expansion-block {
-  border-color: var(--active);
-}
-
-.expansion-block_visible {
-  display: block;
-}
-
-.expansion-block__list {
-  column-count: 3;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.accordion__item:last-child {
-  border-bottom: 1px solid #CACACA;
-}
-
-.expansion-block__btn {
-  position: relative;
-  font-size: 16px;
-  line-height: 32px;
-  color: var(--text-color-2);
-}
-
-.expansion-block__btn:focus {
-  outline: none;
-}
-
-.expansion-block__btn:not(:hover):not(:active):focus {
-  background-color: #9D5CD0;
-}
-
-.expansion-block__btn::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: transparent;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.expansion-block__btn:hover::after {
-  background-color: #9D5CD0;
-}
-
-.cork {
-  display: flex;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.cork_disabled {
-  display: none;
-}
-
-.cork__img {
-  position: relative;
-  margin-right: 24px;
-  width: 275px;
-  min-height: 189px;
-  border: 2px solid #999;
-}
-
-.cork__img::after {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px;
-  content: "";
-  background-color: #999;
-}
-
-.cork__title {
-  margin-bottom: 5px;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  color: var(--text-color-2);
-}
-
-.cork__description {
-  margin-bottom: 5px;
-  max-width: 275px;
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--text-color-2);
-}
-
-.cork__link {
-  position: relative;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  color: #9D5CD0;
-  transition: color 0.2s ease-in-out;
-}
-
-.cork__link::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  right: -8px;
-  bottom: -5px;
-  left: -8px;
-  background-color: #9D5CD0;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.cork__link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: #9D5CD0;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-.cork__link:focus {
-  outline: none;
-}
-
-.cork__link:not(:hover):focus {
-  color: var(--text-color-1);
-}
-
-.cork__link:not(:hover):focus::before {
-  opacity: 1;
-}
-
-.cork__link:hover::after {
-  opacity: 1;
-}
-
-.cork__link:active {
-  color: var(--text-color-2);
-}
-
-.cork__link:active::after {
-  background-color: var(--text-color-2);
-}
-
-.cork__link span {
-  position: relative;
-  z-index: 10;
-} */
-
-/* =====Ремонтные работы===== */
-
 /* events */
 .events {
   padding-top: 0;
@@ -1990,6 +1716,10 @@ p {
 
 .event-card__picture {
   display: flex;
+}
+
+.event-card__img {
+  width: 100%;
 }
 
 .event-card__content {
@@ -2440,16 +2170,19 @@ p {
 
 .callback-form {
   display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .callback-form__label {
   position: relative;
   margin-right: 20px;
+  flex-basis: 270px;
 }
 
 .callback-form__input {
   padding: 8px 23px;
-  width: 270px;
+  width: 100%;
   border: 1px solid #333;
   border-radius: 100px;
   font-weight: 400;
@@ -2474,7 +2207,7 @@ p {
 .callback-form__btn {
   position: relative;
   padding: 10.5px 33px;
-  width: 329px;
+  flex-basis: 329px;
   border: 2px solid var(--border-1);
   border-radius: 100px;
   font-weight: 700;
@@ -2581,6 +2314,9 @@ p {
 .contacts__map {
   height: 700px;
   max-width: 1920px;
+}
+
+.ymaps-2-1-79-ground-pane {
   filter: grayscale();
 }
 
