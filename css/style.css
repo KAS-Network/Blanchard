@@ -79,8 +79,8 @@ p {
 
 .container {
   margin: 0 auto;
-  padding: 0 15px;
-  max-width: 1630px;
+  padding: 0 50px;
+  max-width: 1700px;
 }
 
 .list-reset {
@@ -1243,6 +1243,7 @@ p {
 .catalog__content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .about-artist {
@@ -1252,36 +1253,44 @@ p {
   width: 46.875%;
 }
 
-.about-artist__picture {
-  display: none;
-  margin-bottom: 30px;
-}
-
-.about-artist__picture_selected {
-  display: flex;
-  animation-name: fade-in;
-  animation-duration: 0.5s;
-}
-
-.about-artist__info {
+.about-artist__content {
   display: none;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.about-artist__info_selected {
+.about-artist__content_active {
   display: flex;
   animation-name: fade-in;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
+}
+
+.about-artist__content_inactive {
+  animation-name: fade-out;
+  animation-duration: 0.3s;
 }
 
 @keyframes fade-in {
   from {
-    opacity: 0;
+      opacity: 0;
   }
   to {
-    opacity: 1;
+      opacity: 1;
   }
+}
+
+@keyframes fade-out {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+.about-artist__picture {
+  display: flex;
+  margin-bottom: 30px;
 }
 
 .about-artist__name {
@@ -1300,10 +1309,13 @@ p {
 }
 
 .about-artist__text {
-  margin-bottom: 15px;
   font-size: 16px;
   line-height: 32px;
   color: var(--text-color-2);
+}
+
+.about-artist__text:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .about-artist__link {
@@ -1367,8 +1379,6 @@ p {
   position: relative;
   z-index: 10;
 }
-
-/* =====Ремонтные работы===== */
 
 .accordion {
   width: 50%;
@@ -1524,9 +1534,40 @@ p {
 }
 
 .drop-down-block__btn {
+  position: relative;
   font-size: 16px;
   line-height: 32px;
   color: var(--text-color-2);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.drop-down-block__btn_active {
+  color: #7943A4;
+}
+
+.drop-down-block__btn:focus {
+  outline: none;
+}
+
+.drop-down-block__btn:not(:hover):focus {
+  background-color: #9D5CD0;
+  color: var(--text-color-1);
+}
+
+.drop-down-block__btn::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: #9D5CD0;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.drop-down-block__btn:hover::after {
+  opacity: 1;
 }
 
 .cork {
@@ -1548,10 +1589,6 @@ p {
 .accordion__item[data-active] .accordion__trigger:active + .drop-down-block .cork {
   border-color: #7943A4;
 }
-
-/* .cork_disabled {
-  display: none;
-} */
 
 .cork__img {
   position: relative;
@@ -2574,6 +2611,10 @@ p {
 
 .social-list__link {
   display: flex;
+}
+
+.social-list__link:focus {
+  outline: none;
 }
 
 .social-list__link path {

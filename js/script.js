@@ -132,7 +132,43 @@ gallerySlides.forEach(function(slide) {
   slide.addEventListener("click", openPopup);
 });
 
-//  =====Ремонтные работы=====
+function openArtistBlock(block) {
+  if(!block.classList.contains("about-artist__content_active")) {
+    tabBtnUnlocked = false;
+    const openBlock = document.querySelector(".about-artist__content_active");
+    openBlock.classList.add("about-artist__content_inactive");
+    setTimeout(function() {
+      openBlock.classList.remove("about-artist__content_active");
+      openBlock.classList.remove("about-artist__content_inactive");
+      block.classList.add("about-artist__content_active");
+      setTimeout(function() {
+        tabBtnUnlocked = true;
+      }, 300);
+    }, 300);
+  }
+}
+
+const tabBtnList = document.querySelectorAll(".drop-down-block__btn");
+const contentBlockList = document.querySelectorAll(".about-artist__content");
+var tabBtnUnlocked = true;
+
+tabBtnList.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    if(tabBtnUnlocked) {
+      const name = btn.dataset.name;
+      var targetBlock = document.querySelector(`.about-artist__content[data-target="${name}"]`);
+      if(targetBlock === null) {
+        targetBlock = document.querySelector(".about-artist__content:not([data-target])");
+      }
+      if(!btn.classList.contains("drop-down-block__btn_active")) {
+        const activeBtn = document.querySelector(".drop-down-block__btn_active");
+        activeBtn.classList.remove("drop-down-block__btn_active");
+        btn.classList.add("drop-down-block__btn_active");
+      }
+      openArtistBlock(targetBlock);
+    }
+  });
+});
 
 function openDropDownBlock(block) {
   triggerUnlockedForOpening = false;
@@ -192,28 +228,6 @@ triggerList.forEach(function(trigger) {
   });
 });
 triggerList[0].click();
-
-const artistBtns = document.querySelectorAll(".drop-down-block__btn");
-artistBtns.forEach(function(btn) {
-  btn.addEventListener("click", function() {
-    const selectedPicture = document.querySelector(".about-artist__picture_selected");
-    const selectedInfo = document.querySelector(".about-artist__info_selected");
-    selectedPicture.classList.remove("about-artist__picture_selected");
-    selectedInfo.classList.remove("about-artist__info_selected");
-    const name = btn.dataset.name;
-    const targetPicture = document.querySelector(`.about-artist__picture[data-target="${name}"]`);
-    const targetInfo = document.querySelector(`.about-artist__info[data-target="${name}"]`);
-    if(targetPicture) {
-      targetPicture.classList.add("about-artist__picture_selected");
-      targetInfo.classList.add("about-artist__info_selected");
-    }
-    else {
-      document.querySelector(".about-artist__picture:not([data-target])").classList.add("about-artist__picture_selected");
-      document.querySelector(".about-artist__info:not([data-target])").classList.add("about-artist__info_selected");
-    }
-  });
-});
-
 
 const eventsSwiper = new Swiper(".events__swiper", {
   navigation: {
