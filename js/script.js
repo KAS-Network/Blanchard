@@ -319,3 +319,18 @@ function init(){
   contactsMap.geoObjects.add(myPlacemark);
 }
 ymaps.ready(init);
+
+// Плавный скролл
+
+const linkList = document.querySelectorAll(".nav__link[data-goto]");
+linkList.forEach(function(link) {
+  link.addEventListener("click", function(click) {
+    const targetSection = document.querySelector(link.dataset.goto);
+    const topPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: topPosition,
+      behavior: "smooth"
+    });
+    click.preventDefault();
+  });
+});
