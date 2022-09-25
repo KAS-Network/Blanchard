@@ -2172,6 +2172,7 @@ p {
   display: flex;
   align-items: center;
   padding: 0 20px;
+  flex-basis: 949px;
 }
 
 .callback-form__label {
