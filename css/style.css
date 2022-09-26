@@ -39,6 +39,7 @@
   --hover: #C283F3;
   --active: #7943A4;
   --border-1: #9D5CD0;
+  --container-padding: 50px;
 }
 
 html {
@@ -79,7 +80,7 @@ p {
 
 .container {
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 var(--container-padding);
   max-width: 1700px;
 }
 
@@ -133,10 +134,22 @@ p {
   padding-bottom: 30px;
 }
 
+.header__burger-open-btn {
+  display: none;
+}
+
 .header__link-logo {
   display: flex;
   flex-shrink: 0;
   margin-right: 80px;
+}
+
+.header__picture {
+  display: flex;
+}
+
+.search_top {
+  display: none;
 }
 
 .header__menu {
@@ -571,7 +584,7 @@ p {
   bottom: 0;
 }
 
-.search {
+.search_bottom {
   display: flex;
   align-items: flex-end;
   margin-top: 1px;
@@ -579,6 +592,9 @@ p {
 
 .search__btn {
   display: flex;
+}
+
+.search__btn_bottom {
   margin-right: 11px;
 }
 
@@ -2365,4 +2381,79 @@ p {
 
 .social-list__link:active path {
   fill: #9D5CD0;
+}
+
+@media (max-width: 1440px) {
+  .header__container_top {
+    justify-content: flex-start;
+    padding-top: 29px;
+    padding-bottom: 29px;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header__burger-open-btn {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: calc(50% - 36px - 93.8px);
+    height: 28px;
+    width: 36px;
+  }
+
+  .header__burger-open-btn::before,
+  .header__burger-open-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 3.65px;
+    background-color: #fff;
+  }
+
+  .header__burger-open-btn::before {
+    top: 0;
+    width: 36px;
+  }
+
+  .header__burger-open-btn::after {
+    bottom: 0;
+    width: 24px;
+  }
+
+  .header__burger-open-btn span {
+    display: flex;
+    height: 3.65px;
+    width: 28.2px;
+    background-color: #fff;
+  }
+
+  .header__link-logo {
+    margin-right: auto;
+  }
+
+  .search_top {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .search__open-block {
+    display: none;
+    align-items: flex-end;
+  }
+
+  .search__input_top {
+    margin-right: 24px;
+    margin-left: 11px;
+  }
+
+  .search__close-btn {
+    display: flex;
+  }
+
+  .header__container_bottom {
+    display: none;
+  }
 }

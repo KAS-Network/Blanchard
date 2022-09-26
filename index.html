@@ -17,9 +17,30 @@
   <header class="header">
     <div class="header__top">
       <div class="container header__container header__container_top">
+        <button class="header__burger-open-btn btn-reset" aria-label="Открыть бургерное меню"><span></span></button>
         <a href="#" class="header__link-logo">
-          <img src="img/logo.svg" alt="Логотип" class="header__logo">
+          <picture class="header__picture">
+            <source srcset="img/logo-1024.svg" media="(max-width: 1440px)">
+            <img src="img/logo.svg" alt="Логотип" class="header__logo">
+          </picture>
         </a>
+        <form class="header__search header__search_top search search_top" action="https://jsonplaceholder.typicode.com/posts" method="post">
+          <button class="search__btn search__btn_top btn-reset" type="submit">
+            <svg width="30" height="29" viewbox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="9.15446" height="2.28862" transform="matrix(-0.718931 0.695081 0.718931 0.695081 6.58105 21.0461)" fill="white"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1246 24.174C10.0376 24.174 5.32763 19.2726 5.32763 13.5104C5.32763 7.74823 10.0376 2.84676 16.1246 2.84676C22.2115 2.84676 26.9215 7.74823 26.9215 13.5104C26.9215 19.2726 22.2115 24.174 16.1246 24.174ZM16.1246 26.8399C8.76285 26.8399 2.79502 20.8721 2.79502 13.5104C2.79502 6.14869 8.76285 0.180847 16.1246 0.180847C23.4863 0.180847 29.4541 6.14869 29.4541 13.5104C29.4541 20.8721 23.4863 26.8399 16.1246 26.8399Z" fill="white"/>
+            </svg>
+          </button>
+          <div class="search__open-block">
+            <input class="search__input search__input_top" type="text" name="request" placeholder="Поиск по сайту" required>
+            <button class="search__close-btn btn-reset" aria-label="Закрыть поиск">
+              <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="29.567" height="2.9567" transform="matrix(0.707093 0.707121 -0.707093 0.707121 2.09375 0)" fill="white"/>
+                <rect width="29.567" height="2.9567" transform="matrix(0.707093 -0.707121 0.707093 0.707121 0 20.9074)" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </form>
         <div class="header__menu">
           <nav class="header__nav nav">
             <ul class="nav__list list-reset">
@@ -471,8 +492,8 @@
             </li>
           </ul>
         </nav>
-        <form class="header__search search" action="https://jsonplaceholder.typicode.com/posts" method="post">
-          <button class="search__btn btn-reset" type="submit">
+        <form class="header__search header__search_bottom search search_bottom" action="https://jsonplaceholder.typicode.com/posts" method="post">
+          <button class="search__btn search__btn_bottom btn-reset" type="submit">
             <svg width="23" height="22" viewbox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="6.8678" height="1.71695"
                 transform="matrix(-0.718931 0.695081 0.718931 0.695081 4.9375 15.6534)" fill="white" />
@@ -481,7 +502,7 @@
                 fill="white" />
             </svg>
           </button>
-          <input class="search__input" type="text" name="request" placeholder="Поиск по сайту" required>
+          <input class="search__input search__input_bottom" type="text" name="request" placeholder="Поиск по сайту" required>
         </form>
       </div>
     </div>
